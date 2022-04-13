@@ -38,18 +38,18 @@ const lotacoes =[
 ];
 const condutores =[
     {
-        idCondutor: "25133",
+        idCondutor: "8888",
         nome: "Lucas Pletsch",
         setor: "TI"
     },
     {
-        idCondutor: "26543",
-        nome: "Alessandro Sacoman",
-        setor: "TI"
+        idCondutor: "9999",
+        nome: "Joao pereira",
+        setor: "RH"
     },
     {
-        idCondutor: "25689",
-        nome: "Carlos Mazzarao",
+        idCondutor: "6666",
+        nome: "jose pedro",
         setor: "Transporte"
     }
 ];
@@ -165,7 +165,6 @@ exports.saveCarro = function (carro){
     lotacao.idEmpresa = lotacoes.length + 1;
     lotacoes.push(lotacao);
     carro.idEmpresa = lotacao.idEmpresa;
-    carros.push(carro);
 }
     if(carro.locais){
     for (const loca of carro.locais){
@@ -181,8 +180,8 @@ exports.saveCarro = function (carro){
     return carro;
 }
 
-exports.deleteCarro = function(idCarro){
-        const carro = carros.find(carro=>carro.idCarro ==idCarro);
+exports.deleteCarro = function (idCarro){
+        const carro = carros.find(carro => carro.idCarro === idCarro);
         const position = carros.indexOf(carro);
         carros.splice(position, 1);
         return carro;

@@ -27,7 +27,7 @@ test ("Deve retornar um local", function(){
     expect(local).toHaveLength(8);
 
 });
-test.only ("Deve salvar um carro", function(){
+test ("Deve salvar um carro", function(){
     const carro = {
         modelo:"Duster",
         ano: 2015,
@@ -47,17 +47,18 @@ test.only ("Deve salvar um carro", function(){
     expect(carro1.ano).toBe(2015);
     expect(carro1.km).toBe(4400);
     expect(carro1.status).toBe("Disponivel");
-    const [local1] = carro1.local;
+    const [local1] = carro.local;
     expect(local1.nome).toBe("Faz. Lagoa");
     expect(carro1.lotacao.empresa).toBe("IMOB");
+    console.log(carro1.idCarro);
     carsService.deleteCarro(carro1.idCarro);
 })
 
 test ("Deve apagar um carro", function(){
     const carro = {
         modelo:"Duster",
-        ano: 2019,
-        km: 5500,
+        ano: 2015,
+        km: 4400,
         status: "Disponivel",
         local: [{
             nome: "Faz. Lagoa"
@@ -70,6 +71,7 @@ test ("Deve apagar um carro", function(){
     const carrosBefore = carsService.getCarsByModelo("Duster");
     const [carro1] = carrosBefore;
     expect(carro1.modelo).toBe("Duster");
+    console.log(carro.idCarro);
     carsService.deleteCarro(carro1.idCarro);
     const carrosAffer = carsService.getCarsByModelo("Duster");
     expect(carrosAffer).toHaveLength(0);

@@ -97,7 +97,7 @@ const axios = require("axios");
 				query: `
 					mutation {
 							saveCarro1 (
-							modelo: "Palio",
+							modelo: "Duster",
 							ano: 2013, 
 							km: 99999, 
 							status: "Quebrado" ){
@@ -112,7 +112,7 @@ const axios = require("axios");
 			}
 		});
 		const query = response.data;
-		const saveCarro = query.data.saveCarro1;
+		const saveCarro1 = query.data.saveCarro1;
 		const response2 = await axios({
 			url: "http://localhost:4000",
 			method: "post",
@@ -132,7 +132,7 @@ const axios = require("axios");
 		const query2 = response2.data;
 		const carros = query2.data.carros;
 		const [carro1, carro2, carro3,carro4] = carros;
-		expect(carro4.modelo).toBe("Palio");
+		expect(carro4.modelo).toBe("Duster");
 		await axios({
             url: "http://localhost:4000",
             method: "post",
@@ -152,7 +152,7 @@ const axios = require("axios");
                     }
             `,
             variables:{
-                idCarro: saveCarro.idCarro
+                idCarro: saveCarro1.idCarro
             }
             }
         });
@@ -168,7 +168,7 @@ const axios = require("axios");
 				query: `
 					mutation {
 							saveCarro2 (carro: {
-								modelo: "Palio",
+								modelo: "Duster",
 								ano: 2013, 
 								km: 99.999, 
 								status: "Quebrado",
@@ -221,7 +221,7 @@ const axios = require("axios");
 		const query2 = response2.data;
 		const carros = query2.data.carros;
 		const [carro1, carro2, carro3,carro4] = carros;
-		expect(carro4.modelo).toBe("Palio");
+		expect(carro4.modelo).toBe("Duster");
 		await axios({
             url: "http://localhost:4000",
             method: "post",
@@ -267,7 +267,7 @@ const axios = require("axios");
 				`,
 				variables:{
 					carro:{
-						modelo: "Palio",
+						modelo: "Duster",
 						ano: 2013, 
 						km: 99.999, 
 						status: "Quebrado",
@@ -312,7 +312,7 @@ const axios = require("axios");
 		const query2 = response2.data;
 		const carros = query2.data.carros;
 		const [carro1, carro2, carro3,carro4] = carros;
-		expect(carro4.modelo).toBe("Palio");
+		expect(carro4.modelo).toBe("Duster");
 		await axios({
             url: "http://localhost:4000",
             method: "post",
@@ -420,8 +420,8 @@ const axios = require("axios");
 					}
 				`,
 				variables:{
-					modelo: "Duster",
-					hasLocais: true
+					modelo: "Gol",
+					hasLocais: false
 				
 				}
 			}
@@ -451,8 +451,8 @@ const axios = require("axios");
 							}
 						}
 				`,
-				variables:{
-					carro:{
+				variables: {
+					carro: {
 						modelo: "Duster",
 						ano: 2013, 
 						km: 99.999, 
@@ -464,14 +464,14 @@ const axios = require("axios");
 						],
 						lotacao:
 							{
-								empresa: "CMNP"
-								}
-						}	
+							empresa: "CMNP"
+							}
+					}	
 				}
 			}
 		});
 		const query = response.data;
-		const saveCarro = query.data.saveCarro2;
+		const saveCarro2 = query.data.saveCarro2;
 		//apagar
 		const response2 = await axios({
             url: "http://localhost:4000",
@@ -492,8 +492,8 @@ const axios = require("axios");
                     }
             `,
             variables:{
-                idCarro: saveCarro.idCarro
-            }
+                idCarro: saveCarro2.idCarro
+            	}
             }
         });
 
@@ -508,7 +508,7 @@ const axios = require("axios");
 				query: `
 					{
 						carros (modelo: "Duster") {
-							idCarro
+							modelo
 							
 						}
 					}

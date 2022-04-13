@@ -20,5 +20,3 @@ Opcional:
 10 - Colocar em produção na cloud (AWS, Azure, Google)
 
 Data: 30 dias
-
-Continuar primeira aula 02:23
